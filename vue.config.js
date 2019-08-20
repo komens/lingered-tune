@@ -10,5 +10,17 @@ module.exports = {
       .set('assets',resolve('src/assets'))
       .set('views', resolve('src/views'))
 	  .set('components', resolve('src/components'))
+  },
+  devServer: {
+      proxy: {
+          '/api': {
+              target: 'http://api.youngam.cn/music',
+              changeOrigin: true,
+              ws: true,
+              pathRewrite: {
+                '^/api': ''
+              }
+          }
+      }
   }
 };

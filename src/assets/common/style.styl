@@ -5,8 +5,15 @@ $mFontSize = 15px
 $lFontSize = 17px
 
 $defaultBgColor = #03A9F4
-$defaultBorderCOlor = #ddd
+$defaultBorderColor = #ddd
+$activeBgColor = #FFEB3B
+
 fontDefault(fontColor = $defaultFontColor)
-	color fontColor
-	font-size $mFontSize
-	background $defaultBgColor
+  color fontColor
+  font-size $mFontSize
+  background $defaultBgColor
+  
+hideText()
+  text-overflow ellipsis
+  overflow hidden
+  white-space nowrap

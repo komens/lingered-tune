@@ -6,7 +6,7 @@
       <router-link to="/search" class="search">搜索</router-link>
 		</div>
     <div class="nav-wrapper">
-      <router-link to="/">推荐</router-link>
+      <router-link to="/" exact>推荐</router-link>
       <router-link to="/songSheet">歌单</router-link>
       <router-link to="/rankinglist">排行榜</router-link>
       <router-link to="/singers">歌手</router-link>
@@ -33,4 +33,13 @@ export default {
   .nav-wrapper
     display flex
     justify-content space-around
+    a
+      line-height 19px
+      box-sizing border-box
+      margin-bottom 2px
+      &.active
+        margin-bottom 0
+        color $activeBgColor
+        border-radius 1px
+        border-bottom 2px solid $activeBgColor
 </style>

@@ -4,7 +4,9 @@
       <span>{{type}}</span>
       <button @click="handleClick">选择分类<span :class="{iconfont:true,active: showDialog}">&#xe628;</span></button>
       <transition name="right">
-        <sheet-choose  v-if="showDialog" @hide="dialogHide"></sheet-choose>
+        <keep-alive>
+          <sheet-choose  v-show="showDialog" @hide="dialogHide" @choose="chooseHandle"></sheet-choose>
+        </keep-alive>
       </transition>
     </div>
     <div class="right">
@@ -32,6 +34,10 @@
       },
       dialogHide() {
         this.showDialog = false
+      },
+      chooseHandle(type) {
+        this.type = type
+        this.dialogHide()
       }
     }
   }

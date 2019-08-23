@@ -1,6 +1,6 @@
 <template>
 	<div id="recommend" ref="bsWrapper">
-		<div>
+		<div class="recomend-container">
       <recommend-swiper></recommend-swiper>
       <song-lists></song-lists>
       <new-songs></new-songs>
@@ -34,4 +34,6 @@ export default {
   #recommend
     height calc(100vh - 61px)
     overflow hidden
+    .recomend-container
+      padding-bottom 60px
 </style>

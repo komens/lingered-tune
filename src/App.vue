@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <my-nav />
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 <script>
@@ -15,6 +17,8 @@ export default {
 </script>
 <style lang="stylus">
 @import '~assets/css/reset.css'
+@import '~assets/css/iconfont/iconfont.css'
 body
   font-family '宋体', 'SimSun', '楷体', 'KaiTi', '华文行楷', '华文楷体', 'arial', 'Verdana', 'helvetica', 'sans-serif'
+  color #333
 </style>

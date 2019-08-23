@@ -1,12 +1,16 @@
 <template>
 	<div id="song-sheet">
-		SongSheet
+		<sheet-type></sheet-type>
 	</div>
 </template>
 
 <script>
+  import SheetType from 'components/SongSheet/SheetType'
 export default {
-	name: 'SongSheet'
+	name: 'SongSheet',
+  components: {
+    SheetType
+  }
 }
 </script>
 

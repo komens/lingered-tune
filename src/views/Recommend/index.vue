@@ -9,9 +9,9 @@
 </template>
 
 <script>
- import RecommendSwiper from 'components/RecommendSwiper'
- import SongLists from 'components/SongLists'
- import NewSongs from 'components/NewSongs'
+ import RecommendSwiper from 'components/Recommend/RecommendSwiper'
+ import SongLists from 'components/Recommend/SongLists'
+ import NewSongs from 'components/Recommend/NewSongs'
  import BScroll from 'better-scroll'
 export default {
 	name: 'Recommend',

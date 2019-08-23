@@ -1,9 +1,9 @@
 <template>
 	<div id="nav">
 		<div class="logo-wrapper">
-      <router-link to="/user" class="user">用户</router-link>
+      <router-link to="/user" class="iconfont user">&#xe64b;</router-link>
       <div to="/" class="logo">余音</div>
-      <router-link to="/search" class="search">搜索</router-link>
+      <router-link to="/search" class="iconfont search">&#xe60c;</router-link>
 		</div>
     <div class="nav-wrapper">
       <router-link to="/" exact>推荐</router-link>
@@ -28,8 +28,12 @@ export default {
   a
     color $activeFontColor
   .logo-wrapper
+    font-size: 20px
     display flex
     justify-content space-between
+    padding 0 20px
+    .iconfont
+      font-size 18px
   .nav-wrapper
     display flex
     justify-content space-around

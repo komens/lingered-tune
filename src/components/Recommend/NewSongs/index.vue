@@ -6,10 +6,10 @@
         <router-link :to="'/song/'+song.id">
           <span class="left">
             <p class="name">{{song.name}}</p>
-            <p class="singer">{{song.song.artists[0].name}}</p>
+            <p class="singer"> - {{song.song.artists[0].name}} - </p>
           </span>
-          <span class="right">
-            播放
+          <span class="iconfont right">
+            &#xe63a;
           </span>
         </router-link>
       </li>
@@ -59,14 +59,17 @@
           width 94%
           margin 0 auto
           padding 6px 10px
-          border-bottom 1px solid #eee
+          border-bottom 1px solid #F8F8FF
           .left
             .name
-              font-size 17px
+              font-size 16px
               font-weight 600
+              color #444
             .singer
               font-size 12px
               line-height 16px
               color #757575
               margin-left 4px
+          .right
+            color $defaultBgColor
 </style>

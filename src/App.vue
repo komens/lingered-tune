@@ -4,14 +4,17 @@
     <keep-alive>
       <router-view />
     </keep-alive>
+    <audio-player></audio-player>
   </div>
 </template>
 <script>
 import MyNav from 'views/Nav/'
+import AudioPlayer from 'views/AudioPlayer'
 export default {
 	name: 'App',
 	components: {
-		MyNav
+		MyNav,
+    AudioPlayer
 	}
 }
 </script>

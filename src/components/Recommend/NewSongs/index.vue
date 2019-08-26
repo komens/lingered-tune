@@ -29,18 +29,12 @@
         songList: []
       }
     },
-    methods: {
-      
-    },
     mounted() {
       this.axios.get('api/newest.json')
       .then((res) => {
         this.songList =  res.data.data;
         console.log(this.songList)
       })
-    },
-    filters: {
-     
     }
   }
 </script>

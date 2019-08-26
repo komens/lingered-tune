@@ -26,5 +26,5 @@ export default {
     .sheet-wrapper
       height calc(100vh - 101px)
       .sheet-list
-        padding-bottom 60px
+        padding-bottom 75px
 </style>

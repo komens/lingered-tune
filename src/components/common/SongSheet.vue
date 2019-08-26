@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="song-container">
     <div class="list-bg" v-lazy:background-image="list.coverImgUrl">
       <p class="play-count">{{list.playCount | playCount}}</p>
@@ -17,7 +17,7 @@
       }
     },
     filters: {
-      hideMoreText(value, max = 19) {
+      hideMoreText(value, max = 18) {
         if(value.length > max) {
           return value.slice(0,max-2) + '...'
         } else {

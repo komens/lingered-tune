@@ -1,29 +1,13 @@
-# lingered-tune
+# 余音绕梁
 
-## Project setup
-```
-npm install
-```
+### 一个基于Vue 3.x的音乐app
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+* 目前项目正在缓慢制作中...
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+*很慢很慢...*
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 特别鸣谢：
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+*Api提供：[MessApi](https://messoer.github.io/mess-api-doc/#/)*

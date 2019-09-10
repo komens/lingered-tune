@@ -10,5 +10,5 @@
 ## 特别鸣谢：
 
 
-*Api提供：[MessApi](https://messoer.github.io/mess-api-doc/#/)*  
+*Api提供：[MessApi](https://messoer.github.io/mess-api-doc/#/)*    
 *API已经被律师函警告,等我找到合适的api再说*

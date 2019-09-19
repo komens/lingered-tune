@@ -12,9 +12,10 @@ module.exports = {
 	  .set('components', resolve('src/components'))
   },
   devServer: {
+	  disableHostCheck: true,
       proxy: {
           '/api': {
-              target: 'http://api.youngam.cn/music',
+              target: 'http://www.china-4s.com/',
               changeOrigin: true,
               ws: true,
               pathRewrite: {

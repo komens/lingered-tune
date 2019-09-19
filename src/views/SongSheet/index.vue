@@ -1,8 +1,8 @@
 <template>
 	<div id="song-sheet">
-		<sheet-type></sheet-type>
+		<sheet-type @typechoose="typeChoose"></sheet-type>
     <scroll class="sheet-wrapper">
-      <sheet-list class="sheet-list"></sheet-list>
+      <sheet-list class="sheet-list" :songLists="songLists"></sheet-list>
     </scroll>
 	</div>
 </template>
@@ -17,6 +17,25 @@ export default {
     SheetType,
     SheetList,
     Scroll
+  },
+  data() {
+    return {
+      songLists: []
+    }
+  },
+  methods: {
+    typeChoose(type) {
+      this.axios.get('api/top/playlist?limit=30&cat=' + type)
+      .then((res) => {
+        this.songLists =  res.data.playlists;
+      })
+    }
+  },
+  mounted() {
+    this.axios.get('api/top/playlist?limit=30')
+      .then((res) => {
+        this.songLists =  res.data.playlists;
+      })
   }
 }
 </script>

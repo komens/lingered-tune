@@ -4,18 +4,24 @@
     <keep-alive>
       <router-view />
     </keep-alive>
-    <audio-player></audio-player>
+    <audio-player v-if="currentSong.id"></audio-player>
   </div>
 </template>
 <script>
 import MyNav from 'views/Nav/'
 import AudioPlayer from 'views/AudioPlayer'
+import { mapState } from 'vuex'
 export default {
 	name: 'App',
 	components: {
 		MyNav,
     AudioPlayer
-	}
+  },
+  computed: {
+    ...mapState([
+      'currentSong'
+    ])
+  }
 }
 </script>
 <style lang="stylus">

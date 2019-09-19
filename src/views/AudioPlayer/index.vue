@@ -1,11 +1,12 @@
 <template>
   <div class="audio-player">
     <div class="wrapper">
+      <audio :src="songUrl" @canplay="MusicPlayPause" ref="audio"></audio>
       <div class="left">
-        <div class="music-img"></div>
+        <div class="music-img" :style="{'background-image':'url('+song.album.picUrl+')'}"></div>
         <div class="music-title">
-          <h3>勿忘心安</h3>
-          <p>张杰</p>
+          <h3>{{song.name}}</h3>
+          <p>{{song.artists[0].name}}</p>
         </div>
       </div>
       <div class="right">
@@ -26,8 +27,8 @@
       <div class="music" @click.self="hideList" v-show="showList">
         <Bscroll class="list">
           <ul>
-          	<li v-for="(i) in 15" :key="i">
-              <p>世本常态 - 隔壁老樊</p>
+          	<li v-for="s in list" :key="s.id">
+              <p>{{s.name}} - {{s.artists[0].name}}</p>
               <i>x</i>
             </li>
           </ul>
@@ -39,6 +40,7 @@
 
 <script>
   import Bscroll from 'components/common/Bscroll.vue'
+  import { mapState } from 'vuex'
   export default {
     name: 'AudioPlayer',
     components: {
@@ -50,7 +52,9 @@
         isHalf: false,
         play: false,
         timer: null,
-        showList: false
+        songUrl: '',
+        showList: false,
+        audio: null
       }
     },
     methods: {
@@ -82,15 +86,25 @@
         }
         const pro = this.progress % 100
         return pro * 360 / 100 - 180 * this.isHalf
-      }
+      },
+      ...mapState({
+        song: 'currentSong',
+        list: 'songList'
+      })
     },
     watch: {
       progress(val) {
         this.isHalf = val % 100 > 50 ? true : false
+      },
+      song(val) {
+        this.axios.get('api/song/url?id=' + val.id).then((res)=>{
+          res = res.data.data[0]
+          this.songUrl = res.url
+        })
       }
     },
     mounted() {
-      this.audio = new Audio('http://mp3.9ku.com/m4a/464446.m4a')
+      this.audio = this.$refs.audio
     }
   }
 </script>
@@ -114,9 +128,11 @@
       padding 0 15px
       .left
         display flex
+        width 70%
         align-items center
         background #fff
         .music-img
+          flex-basis 50px
           width 3.125rem
           height 3.125rem
           border-radius 50%
@@ -124,11 +140,14 @@
           background-size cover
           background-position center center
         .music-title
+          flex 1
           padding 0 0.75rem
+          overflow hidden
           h3
             font-size 1rem
             line-height 1.6
             font-weight bold
+            hideText()
           p
             font-size 0.75rem
             color #666

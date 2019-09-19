@@ -45,11 +45,11 @@
       }
     },
     mounted() {
-      this.axios.get('api/hot.json')
+      // this.axios.get('api/hot.json')
+      this.axios.get('api/top/playlist?limit=30')
       .then((res) => {
-        this.songLists =  res.data.data;
-        this.showLists = res.data.data.slice(0,6)
-        console.log(this.showLists)
+        this.songLists =  res.data.playlists
+        this.showLists = res.data.playlists.slice(0,6)
       })
     }
   }

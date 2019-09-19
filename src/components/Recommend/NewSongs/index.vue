@@ -2,18 +2,21 @@
   <div id="NewSongs">
     <title-tag title="最新单曲" />
     <ul class="song-list">
-      <li class="song-container" v-for="song in songList" :key="song.id">
-        <router-link :to="'/song/'+song.id">
+      <li class="song-container" v-for="song in showLists" :key="song.id">
+        <router-link to="/song/+song.id">
           <span class="left">
             <p class="name">{{song.name}}</p>
-            <p class="singer"> - {{song.song.artists[0].name}} - </p>
+            <p class="singer"> - {{song.artists[0].name}} - </p>
           </span>
-          <span class="iconfont right">
+          <span class="iconfont right" @click="AudioChangeSong(song)">
             &#xe63a;
           </span>
         </router-link>
       </li>
     </ul>
+    <div class="more">
+      <span @click="loadMore">{{loadMoreText}}</span>
+    </div>
   </div>
 </template>
 
@@ -26,14 +29,34 @@
     },
     data() {
       return {
-        songList: []
+        songLists: [],
+        showLists: [],
+        step: 10,
+        loadMoreText: '加载更多 >'
+      }
+    },
+    methods: {
+      loadMore() {
+        let showLength = this.showLists.length
+        let songLength = this.songLists.length
+        if(songLength == showLength) {
+          this.showLists = this.songLists.slice(0,this.step)
+          this.loadMoreText = "加载全部"
+        } else {
+          this.showLists = [...this.songLists]
+          this.loadMoreText = "已加载全部"
+        }
+      },
+      AudioChangeSong(song) {
+        this.$store.commit('AudioSetSongList',this.songLists)
+        this.$store.commit('AudioSetCurrentSong',song)
       }
     },
     mounted() {
-      this.axios.get('api/newest.json')
+      this.axios.get('api/top/song')
       .then((res) => {
-        this.songList =  res.data.data;
-        console.log(this.songList)
+        this.songLists =  res.data.data;
+        this.showLists = res.data.data.slice(0,this.step)
       })
     }
   }
@@ -66,4 +89,11 @@
               margin-left 4px
           .right
             color $defaultBgColor
+    .more
+      width 80%
+      margin 0 auto
+      text-align center
+      font-size 14px
+      padding-bottom 15px
+      border-bottom 1px solid #F8F8FF
 </style>

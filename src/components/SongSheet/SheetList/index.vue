@@ -11,17 +11,14 @@
     components: {
       SongSheet
     },
-    data() {
-      return {
-        songLists: []
-      }
+    props: {
+      songLists: Array
     },
     mounted() {
-      this.axios.get('api/hot.json')
-      .then((res) => {
-        this.songLists =  res.data.data;
-        console.log(this.showLists)
-      })
+      // this.axios.get('api/hot.json')
+      // .then((res) => {
+      //   this.songLists =  res.data.data;
+      // })
     }
   }
 </script>

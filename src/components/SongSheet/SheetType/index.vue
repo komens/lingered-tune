@@ -39,6 +39,11 @@
         this.type = type
         this.dialogHide()
       }
+    },
+    watch: {
+      type: function(val) {
+       this.$emit('typechoose',val)
+      }
     }
   }
 </script>
